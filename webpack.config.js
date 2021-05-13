@@ -1,23 +1,40 @@
-const path = requires('path');
-const HTMLWebpackPlugins = requires('html-webpack-plugin');
+const path = require('path');
+const HTMLWebpackPlugins = require('html-webpack-plugin');
 
 const NODE_ENV = process.env.NODE_ENV;
 
 module.exports = {
-    mode: NODE_ENV ? NODE_ENV : 'development',
     resolve: {
-        extentions: ['ts','js','tsx','jsx', 'json']
+        extensions: ['.ts','.js','.tsx','.jsx', '.json']
     },
-    entry: path.resolve(__dirname, 'src/index.html'),
+    mode: NODE_ENV ? NODE_ENV : 'development',
+    entry: path.resolve(__dirname, 'src/index.js'),
     output: {
         path: path.resolve(__dirname, 'dist'),
-        fiiename: 'main.js',
+        filename: 'main.js',
     },
     module: {
         rules: [
             {
                 test: /\.[tj]sx?$/,
                 use: ['ts-loader'],
+            },
+            {
+                test: /\.(s*)css$/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                mode: 'local',
+                                localIdentName: '[name]_[local]_[hash:base64:5]',
+                                auto: /\.modules\. \w+$/i,
+                            }
+                        },
+                    },
+                    'sass-loader'
+                ],
             }
         ],
     },
@@ -30,6 +47,6 @@ module.exports = {
         port: 3000,
         open: true,
         hot: true,
-        
-    }
-}
+    },
+    devtool: 'source-map',
+} 
