@@ -3,7 +3,7 @@ type TsimeArray = (string | number)[];
 interface ImyHometask {
   howIDoIt: ThowIDoIt;
   simeArray: TsimeArray;
-  withData: { howIDoIt: ThowIDoIt; simeArray: TsimeArray }[];
+  withData?: ImyHometask[];
 }
 
 const myHometask: ImyHometask = {
@@ -19,7 +19,7 @@ function concatStr(a: string, b: string): void {
 interface MyArray<T> {
   [N: number]: T;
   map<U>(fn: (el: T) => U): U[];
-  reduce<T>(fn: (sum: number, current: number) => T): number;
+  reduce<U>(fn: (sum: U, current: T) => U): U;
 }
 
 const tsArr: MyArray<number> = [1, 2, 3, 4];
