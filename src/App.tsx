@@ -7,8 +7,6 @@ const App = () => {
   return (
     <React.Fragment>
       <HomePage />
-      <div className={styles.main}></div>
-      <h2>rewq</h2>
     </React.Fragment>
   );
 };

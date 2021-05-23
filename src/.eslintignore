@@ -1,4 +1,4 @@
-# *.css
-# *.scss
+*.css
+*.scss
 
 webpack.config.js
