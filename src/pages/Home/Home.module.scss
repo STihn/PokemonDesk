@@ -1,4 +1,7 @@
+@import '../../varibales';
+
 .root {
+  width: 100%;
   min-height: 100vh;
-  background: linear-gradient(180deg, #f5db13 0%, #f2b807 100%);
+  background: linear-gradient(180deg, $third 0%, $primary 100%);
 }

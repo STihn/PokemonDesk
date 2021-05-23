@@ -20,7 +20,6 @@
   "homepage": "https://github.com/STihn/PokemonDesk#readme",
   "dependencies": {
     "classnames": "^2.3.1",
-    "node-sass": "^4.14.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "strip": "^3.0.0"
@@ -49,6 +48,7 @@
     "html-webpack-plugin": "^4.5.0",
     "husky": "^4.3.0",
     "lint-staged": "^10.5.1",
+    "node-sass": "^4.14.1",
     "prettier": "^2.1.2",
     "pretty-quick": "^3.1.0",
     "sass-loader": "^10.0.4",

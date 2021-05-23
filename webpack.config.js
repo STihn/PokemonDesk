@@ -13,6 +13,11 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
   },
+  watch: true,
+  watchOptions: {
+    ignored: /node_modules/,
+    poll: 1000,
+  },
   module: {
     rules: [
       {
@@ -28,7 +33,7 @@ module.exports = {
         test: /\.scss$/,
         use: [
           'style-loader',
-          'css-modules-typescript-loader?modules',
+          // 'css-modules-typescript-loader?modules',
           {
             loader: 'css-loader',
             options: {
