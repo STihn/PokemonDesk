@@ -1,1 +1,4 @@
 *.css
+*.scss
+
+webpack.config.js

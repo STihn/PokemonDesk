@@ -13,6 +13,11 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
   },
+  watch: true,
+  watchOptions: {
+    ignored: /node_modules/,
+    poll: 1000,
+  },
   module: {
     rules: [
       {
@@ -35,12 +40,32 @@ module.exports = {
               modules: {
                 mode: 'local',
                 localIdentName: '[name]_[local]_[hash:base64:5]',
-                auto: /\.module\. \w+$/i,
+                auto: /\.module\.\w+$/i,
               },
             },
           },
           'sass-loader',
         ],
+      },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack', 'url-loader'],
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/',
+            },
+          },
+        ],
+      },
+      {
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+        use: ['url-loader'],
       },
     ],
   },
