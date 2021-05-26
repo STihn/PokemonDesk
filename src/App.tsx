@@ -1,14 +1,11 @@
 import React from 'react';
-import styles from './App.module.scss';
-// import cn from 'classnames';
-import HomePage from './pages/Home/index';
+import { useRoutes } from 'hookrouter';
+import routes from './routes';
+import NotFoundPage from '../src/pages/NotFoundPages/index';
 
 const App = () => {
-  return (
-    <React.Fragment>
-      <HomePage />
-    </React.Fragment>
-  );
+  const match = useRoutes(routes);
+  return match || <NotFoundPage />;
 };
 
 export default App;
