@@ -7,15 +7,16 @@ import Parallax from '../../components/Parallax/index';
 import Heading from '../../components/Heading/index';
 
 import styles from './Home.module.scss';
+import { navigate } from 'hookrouter';
 
 const HomePage = () => {
   return (
     <div className={styles.root}>
       <Header />
       <Layout className={styles.contentWrap}>
-        <Heading size={3}>Heading</Heading>
+        <Heading size={3}>heading!</Heading>
         <div className={styles.contentText}>
-          <Button onClick={() => console.log('click')}>
+          <Button onClick={() => navigate('/pokedex')} className={styles.button}>
             <p>Pokemon</p>
           </Button>
         </div>

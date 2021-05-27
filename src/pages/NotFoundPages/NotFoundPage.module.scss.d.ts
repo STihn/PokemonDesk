@@ -2,7 +2,10 @@
 // Please do not change this file!
 interface CssExports {
   button: string;
+  image: string;
   root: string;
+  subTitle: string;
+  text: string;
 }
 export const cssExports: CssExports;
 export default cssExports;

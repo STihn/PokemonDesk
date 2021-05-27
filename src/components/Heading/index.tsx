@@ -2,22 +2,18 @@ import React from 'react';
 
 import styles from './Heading.module.scss';
 
-const Heading = ({ children, size }) => {
-  let tag;
-  switch (size) {
-    case '1':
-      tag = '<h1>';
-    case '2':
-      tag = 'h2';
-    case '3':
-      tag = 'h3';
-    case '4':
-      tag = 'h4';
-  }
+interface IProps {
+  children: React.ReactNode;
+  size: number;
+  className?: any;
+}
+
+const Heading: React.FC<IProps> = ({ children, size, className }) => {
+  const Tag = `h${size}` as keyof JSX.IntrinsicElements;
 
   return (
     <div className={styles.root}>
-      <tag>{children}</tag>
+      <Tag className={className}>{children}</Tag>
     </div>
   );
 };
