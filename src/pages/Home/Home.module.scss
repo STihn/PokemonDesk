@@ -15,10 +15,47 @@
   font-weight: bold;
   font-size: 23px;
   line-height: 27px;
-
   display: flex;
   align-items: center;
   text-align: center;
-
   color: #212121;
+}
+
+.contentWrap {
+  display: flex;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 515px;
+}
+
+.title {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 72px;
+  line-height: 84px;
+  letter-spacing: 4px;
+  max-width: 506px;
+  color: #000000;
+  margin: 128px 0 32px;
+}
+
+.subTitle {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 42px;
+  color: #000000;
+  max-width: 515px;
+  margin-bottom: 65px;
+}
+
+.contentParallax {
+  position: relative;
+  width: 793px;
+  margin-top: 67px;
 }

@@ -11,11 +11,7 @@ interface IProps {
 const Heading: React.FC<IProps> = ({ children, size, className }) => {
   const Tag = `h${size}` as keyof JSX.IntrinsicElements;
 
-  return (
-    <div className={styles.root}>
-      <Tag className={className}>{children}</Tag>
-    </div>
-  );
+  return <Tag className={className}>{children}</Tag>;
 };
 
 export default Heading;
