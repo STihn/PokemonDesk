@@ -3,33 +3,30 @@ import Heading from '../Heading';
 
 import styles from './PokemonCard.module.scss';
 
-const PokemonCard = (props: Record<string, any>) => {
-  const { img } = props;
+const PokemonCard = (props: any) => {
+  const { name, attack, defense, img, abilities } = props;
   return (
     <div className={styles.root}>
       <div className={styles.infoWrap}>
         <Heading size={3} className={styles.titleName}>
-          Charmander
+          {name}
         </Heading>
         <div className={styles.statWrap}>
           <div className={styles.statItem}>
-            <div className={styles.statValue}>52</div>
+            <div className={styles.statValue}>{attack}</div>
             Attack
           </div>
           <div className={styles.statItem}>
-            <div className={styles.statValue}>43</div>
+            <div className={styles.statValue}>{defense}</div>
             Defense
           </div>
         </div>
         <div className={styles.labelWrap}>
-          <span className={styles.label}>Fire</span>
+          <span className={styles.label}>{abilities}</span>
         </div>
       </div>
       <div className={styles.pictureWrap}>
-        <img
-          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png"
-          alt="Charmander"
-        />
+        <img src={img} alt={`pokemon: ${name}`} />
       </div>
     </div>
   );

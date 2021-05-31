@@ -7,7 +7,6 @@ interface IDocumentationProps {
 const Documentation: React.FC<IDocumentationProps> = ({ title }) => {
   return (
     <React.Fragment>
-      <Header />
       <div>{title}</div>
     </React.Fragment>
   );
