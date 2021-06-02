@@ -2,7 +2,6 @@ import React from 'react';
 
 import { navigate } from 'hookrouter';
 
-import Header from '../../components/Header/index';
 import Layout from '../../components/Layout/index';
 import Button from '../../components/Buttons/index';
 import Parallax from '../../components/Parallax/index';
