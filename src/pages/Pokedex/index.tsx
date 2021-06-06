@@ -1,7 +1,10 @@
 import React, { useMemo, useState } from 'react';
+import Heading from '../../components/Heading';
 import PokemonCard from '../../components/PokemonCard';
 
 import useData from '../../hook/getData';
+import useDebounce from '../../hook/useDebounce';
+import { IPokemons, PokemonsRequst } from '../../interface/pokemons';
 
 import styles from './Pokedex.module.scss';
 
@@ -9,16 +12,16 @@ interface IPokedexProps {
   title?: string;
 }
 
-interface IPokemons {
-  name: string;
-  id: number;
-  img: string;
-  stats: {
-    attack: number;
-    defense: number;
-  };
-  abilities: [];
-}
+// interface IPokemon {
+//   name: string;
+//   id: number;
+//   img: string;
+//   stats: {
+//     attack: number;
+//     defense: number;
+//   };
+//   abilities: [];
+// }
 
 interface IData {
   total?: number;
@@ -27,16 +30,22 @@ interface IData {
   isError: boolean;
 }
 
+interface IQuery {
+  name?: string;
+}
+
 const Pokedex: React.FC<IPokedexProps> = ({ title }) => {
   const [searchValue, setSearchValue] = useState('');
-  const [query, setQuery] = useState({});
+  const [query, setQuery] = useState<IQuery>({});
 
-  const { data, isLoading, isError }: IData = useData('getPokemons', query, [searchValue]);
+  const debouncedValue = useDebounce(searchValue, 1000);
+
+  const { data, isLoading, isError }: IData = useData<IPokemons>('getPokemons', query, [debouncedValue]);
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
-    setQuery((s) => ({
-      ...s,
+    setQuery((state: IQuery) => ({
+      ...state,
       name: event.target.value,
     }));
   };
@@ -51,16 +60,16 @@ const Pokedex: React.FC<IPokedexProps> = ({ title }) => {
 
   return (
     <div className={styles.root}>
-      <div>
+      <Heading size={1} className={styles.title}>
         {!isLoading && data.total}
         {title}
-      </div>
-      <div>
+      </Heading>
+      <div className={styles.input}>
         <input type="text" value={searchValue} onChange={handleSearchChange} />
       </div>
       <div className={styles.cards}>
         {!isLoading &&
-          data.pokemons.map((pokemon: IPokemons) => {
+          data.pokemons.map((pokemon: PokemonsRequst) => {
             return (
               <PokemonCard
                 name={pokemon.name}
